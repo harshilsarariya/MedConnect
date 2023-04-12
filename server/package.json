@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "\"MedConnect Backend\" is a server-side application built using Node.js and Express.js. It is designed to manage and store medical records for the MedConnect web application. The backend utilizes MongoDB for database storage and provides RESTful API endpoints for the frontend to interact with. With MedConnect Backend, healthcare professionals can easily manage and update medical records for their patients, while patients can securely access their medical records through the web application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
