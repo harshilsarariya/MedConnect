@@ -1,169 +1,132 @@
-import { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Signup() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [patient_no, setPatient_no] = useState('');
-  const [patient_id, setPatient_id] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+const Singup = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-  }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  function handlePasswordChange(event) {
-    setPassword(event.target.value);
-  }
-
-  function handleNameChange(event) {
-    setName(event.target.value);
-  }
-
-  function handlePatient_noChange(event) {
-    setPatient_no(event.target.value);
-  }
-
-  function handlePatient_idChange(event) {
-    setPatient_id(event.target.value);
-  }
-
-  function handleConfirmPasswordChange(event) {
-    setConfirmPassword(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    // Handle signup logic here
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle form submission here
+    alert("Signup successful!");
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create a new account!
-          </h2>
+    <div className="flex items-center mx-3 justify-center bg-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-sm p-6 rounded-lg shadow-md"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-gray-700">Sign Up</h2>
+        <div className="mb-4">
+          <label
+            htmlFor="name"
+            className="block text-gray-700 text-sm font-semibold mb-2"
+          >
+            Patient Name
+          </label>
+          <input
+            required
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+          />
         </div>
-        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-          <div className="rounded-md shadow-sm -space-y-px">
-          
-          <div>
-              <label htmlFor="patient_id" className="sr-only">
-                Patient ID
-              </label>
-              <input
-                id="patient_id"
-                name="patient_id"
-                type="text"
-                required
-                className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Patient ID"
-                value={patient_id}
-                onChange={handlePatient_idChange}
-              />
-            </div>
-            <br/>
-            <div>
-              <label htmlFor="name" className="sr-only">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder=" Patient Name"
-                value={name}
-                onChange={handleNameChange}
-              />
-            </div>
-            <br/>
-            <div>
-              <label htmlFor="patient_no" className="sr-only">
-                Patient Number
-              </label>
-              <input
-                id="patient_no"
-                name="patient_no"
-                type="text"
-                required
-                className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Patient Number"
-                value={patient_no}
-                onChange={handlePatient_noChange}
-              />
-            </div>
-            <br/>
-            
-            <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-                value={email}
-                onChange={handleEmailChange}
-              />
-            </div>
-            <br/>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </div>
-            <br/>
-            <div>
-              <label htmlFor="confirm-password" className="sr-only">
-                Confirm password
-              </label>
-              <input
-                id="confirm-password"
-                name="confirm-password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-              />
-            </div>
-          </div>
-
-          <div>
+        <div className="mb-4">
+          <label
+            htmlFor="email"
+            className="block text-gray-700 text-sm font-semibold mb-2"
+          >
+            Patient Email
+          </label>
+          <input
+            required
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="phone"
+            className="block text-gray-700 text-sm font-semibold mb-2"
+          >
+            Phone Number
+          </label>
+          <input
+            required
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="password"
+            className="block text-gray-700 text-sm font-semibold mb-2"
+          >
+            Password
+          </label>
+          <input
+            required
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="confirmPassword"
+            className="block text-gray-700 text-sm font-semibold mb-2"
+          >
+            Confirm Password
+          </label>
+          <input
+            required
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+          />
+        </div>
+        <span className="text-3xl font-semibold">Already a user? </span>
+        <Link to={"/login"} className="text-[#483280] font-semibold hover:text-yellow-600">
+          Login here!
+        </Link>
+        <div className="flex justify-center">
             <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onSubmit={handleSubmit}
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-900 hover:text-black text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
-            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-          </span>
-          <a href="/login" ></a>
-          Sign up
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-);
-}
+              SignUp
+            </button>
+          </div>
+      </form>
+    </div>
+  );
+};
 
-export default Signup;
+export default Singup;

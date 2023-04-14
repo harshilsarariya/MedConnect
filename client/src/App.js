@@ -8,23 +8,21 @@ import EditPatientInfo from "./Hospital/EditPatientInfo";
 import Admin from "./Admin/Admin";
 import AdminSidebar from "./Admin/AdminSidebar";
 import AddHospital from "./Admin/AddHospital";
-import InitialPage from "./Components/InitialPage";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-    <Route path="/" exact element={<InitialPage/>}/>
+      <Navbar />
+      <Routes>
+        {/* <Route path="/" exact element={<InitialPage />} /> */}
         <Route path="/signup" exact element={<Signup />} />
-			  <Route path="/login" exact element={<Login />} />
-    </Routes>
+        <Route path="/login" exact element={<Login />} />
+      </Routes>
       <div className="w-full nunito-font h-full ">
-        <Navbar />
         <Routes>
-        
-          {/* <Route exact path="/" element={<Home />} /> */}
+          <Route exact path="/" element={<Home />} />
           {/* hospital section */}
           <Route
             exact

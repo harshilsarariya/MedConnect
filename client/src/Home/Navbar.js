@@ -8,9 +8,11 @@ const Navbar = () => {
         <NavLink to={"/"}>MedConnect</NavLink>
       </div>
       <div>
-        <button className="bg-white text-blue-500 hover:bg-[#224a78] hover:text-white font-bold py-2 px-4 rounded">
-          Login
-        </button>
+        <NavLink to={"/Login"}>
+          <button className="bg-white hover:bg-blue-300 hover:text-black text-blue-500 font-bold py-2 px-4 rounded">
+            Login
+          </button>
+        </NavLink>
       </div>
     </nav>
   );
