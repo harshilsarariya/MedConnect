@@ -5,25 +5,50 @@ import Hospital from "./Hospital/Hospital";
 import SearchPatient from "./Hospital/SearchPatient";
 import Sidebar from "./Hospital/Sidebar";
 import EditPatientInfo from "./Hospital/EditPatientInfo";
+import Admin from "./Admin/Admin";
+import AdminSidebar from "./Admin/AdminSidebar";
+import AddHospital from "./Admin/AddHospital";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="w-full nunito-font h-full bg-[#F1F5F9]">
+      <div className="w-full nunito-font h-full ">
         <Navbar />
-        <div className="flex flex-no-wrap">
-          <Sidebar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* hospital section */}
-            <Route path="/Hospital" element={<Hospital />} />
-            <Route path="/Hospital/SearchPatient" element={<SearchPatient />} />
-            <Route
-              path="/Hospital/EditPatientInfo/:userId"
-              element={<EditPatientInfo />}
-            />
-          </Routes>
-        </div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          {/* hospital section */}
+          <Route
+            exact
+            path="/Hospital/*"
+            element={
+              <div className="flex flex-no-wrap">
+                <Sidebar />
+                <Routes>
+                  <Route path="/" element={<Hospital />} />
+                  <Route path="/SearchPatient" element={<SearchPatient />} />
+                  <Route
+                    path="/EditPatientInfo/:userId"
+                    element={<EditPatientInfo />}
+                  />
+                </Routes>
+              </div>
+            }
+          />
+          {/* Admin Section */}
+          <Route
+            exact
+            path="/Admin/*"
+            element={
+              <div className="flex flex-no-wrap">
+                <AdminSidebar />
+                <Routes>
+                  <Route path="/Admin" element={<Admin />} />
+                  <Route path="/Admin/AddHospital" element={<AddHospital />} />
+                </Routes>
+              </div>
+            }
+          />
+        </Routes>
       </div>
     </BrowserRouter>
   );
