@@ -11,6 +11,7 @@ import AddHospital from "./Admin/AddHospital";
 import InitialPage from "./Components/InitialPage";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
+import PatientInfoPage from "./Hospital/PatientInfoPage";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                     path="/EditPatientInfo/:userId"
                     element={<EditPatientInfo />}
                   />
+                  <Route path="/PatientInfo" element={<PatientInfoPage />} />
                 </Routes>
               </div>
             }
