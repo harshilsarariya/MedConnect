@@ -9,11 +9,6 @@ function PatientProfile({ id, name, age, gender, bloodGroup, disease_name, disea
     bloodGroup,
   });
 
-  // const [diseaseData, setDiseaseData] =useState({
-  //   disease_name,
-  //   disease_severity,
-  // })
-
   const handleEdit = () => {
     setIsEditing(true);
   };
