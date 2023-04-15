@@ -3,7 +3,8 @@ const router = require("express").Router();
 
 // Create a new hospital:
 router.post("/addHospital", (req, res) => {
-  const { name, address, phone, hospitalId } = req.body;
+  const { name, address, phone } = req.body;
+  const hospitalId = "H" + Date.now().toString();
   const newHospital = new Hospital({
     name,
     address,
