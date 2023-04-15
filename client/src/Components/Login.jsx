@@ -1,83 +1,76 @@
-import { useState } from 'react';
+import { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [ID, setID] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleIDChange = (e) => {
-    setID(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle form submission
+    alert("Logged in successfully!");
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-50 py-12 px-4 sm:px-6 lg:px-8 ">
-  <div className="max-w-md w-full space-y-8 ">
-    <div>
-      <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 ">Hello Again!</h2>
-    </div>
-    <form onSubmit={handleSubmit} className="mt-8 space-y-6 " >
-      <div className="rounded-md shadow-sm -space-y-px">
-        <div>
-          <input
-            id="ID"
-            name="ID"
-            type="ID"
-            autoComplete="ID"
-            required
-            className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-            placeholder="Enter ID"
-            value={ID}
-            onChange={handleIDChange}
-          />
-        </div>
-        <br/>
-        <div>
-          
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between">
-        <div className="text-sm">
-              <a href="#" className="font-medium text-grey-900 hover:text-orange-500 hover:underline">
-                Forgot your password?
-              </a>
-            </div>
-      </div>
-             
-          <div>
-            <button
-              type="submit"
-              className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-white bg-blue-500 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+    <div className="flex items-center mx-3 justify-center container mt-4 bg-gray-100">
+      <div className="p-6 bg-white rounded-md  shadow-md w-full">
+        <h2 className="text-2xl font-bold mb-4">Login</h2>
+        <form>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 font-semibold mb-2"
             >
-              <a href="/home"></a>
-            Log in
-        </button>
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="w-full px-3 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 font-semibold mb-2"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="w-full px-3 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="flex justify-between items-center mb-6">
+            <div>
+              <span className="text-gray-700 font-semibold">New user? </span>
+              <Link
+                to="/signup"
+                className="text-blue-500 font-semibold hover:text-green-900"
+              >
+                Register here.
+              </Link>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <button
+              onSubmit={handleSubmit}
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-900 hover:text-black text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              Login
+            </button>
+          </div>
+        </form>
       </div>
-      
-    </form>
-  </div>
-</div>
-
-  )
-}
+    </div>
+  );
+};
 
 export default Login;
