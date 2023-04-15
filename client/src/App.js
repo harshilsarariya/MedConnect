@@ -12,6 +12,7 @@ import InitialPage from "./Components/InitialPage";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import PatientInfoPage from "./Hospital/PatientInfoPage";
+import PatientProfile from "./Patient/Profile";
 
 function App() {
   return (
@@ -60,6 +61,11 @@ function App() {
             }
           />
         </Routes>
+        {/*Patient Section */}
+        <Routes>
+        <Route path="/patientprofile" element={<PatientProfile/>}/>
+        </Routes>
+        
       </div>
     </BrowserRouter>
   );
