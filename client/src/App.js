@@ -8,57 +8,82 @@ import EditPatientInfo from "./Hospital/EditPatientInfo";
 import Admin from "./Admin/Admin";
 import AdminSidebar from "./Admin/AdminSidebar";
 import AddHospital from "./Admin/AddHospital";
-import InitialPage from "./Components/InitialPage";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
+import PatientInfoPage from "./Hospital/PatientInfoPage";
+import PatientProfile from "./Patient/Profile";
 
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-    <Route path="/" exact element={<InitialPage/>}/>
-        <Route path="/signup" exact element={<Signup />} />
-			  <Route path="/login" exact element={<Login />} />
-    </Routes>
-      <div className="w-full nunito-font h-full ">
-        <Navbar />
-        <Routes>
-        
-          {/* <Route exact path="/" element={<Home />} /> */}
-          {/* hospital section */}
-          <Route
-            exact
-            path="/Hospital/*"
-            element={
+      <Routes>
+        {/* General routes */}
+        <Route
+          path="/*"
+          element={
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/" exact element={<Home />} />
+                <Route path="/signup" exact element={<Signup />} />
+                <Route path="/login" exact element={<Login />} />
+              </Routes>
+            </>
+          }
+        />
+
+        {/* Hospital section */}
+        <Route
+          path="/hospital/*"
+          element={
+            <>
+              <Navbar />
               <div className="flex flex-no-wrap">
                 <Sidebar />
                 <Routes>
                   <Route path="/" element={<Hospital />} />
-                  <Route path="/SearchPatient" element={<SearchPatient />} />
+                  <Route path="/searchpatient" element={<SearchPatient />} />
                   <Route
-                    path="/EditPatientInfo/:userId"
+                    path="/editpatientinfo/:userId"
                     element={<EditPatientInfo />}
                   />
+                  <Route path="/patientinfo" element={<PatientInfoPage />} />
                 </Routes>
               </div>
-            }
-          />
-          {/* Admin Section */}
-          <Route
-            exact
-            path="/Admin/*"
-            element={
+            </>
+          }
+        />
+
+        {/* Admin section */}
+        <Route
+          path="/admin/*"
+          element={
+            <>
+              <Navbar />
               <div className="flex flex-no-wrap">
                 <AdminSidebar />
                 <Routes>
-                  <Route path="/Admin" element={<Admin />} />
-                  <Route path="/Admin/AddHospital" element={<AddHospital />} />
+                  <Route path="/" element={<Admin />} />
+                  <Route path="/addhospital" element={<AddHospital />} />
                 </Routes>
               </div>
-            }
-          />
-        </Routes>
-      </div>
+            </>
+          }
+        />
+
+        {/* Patient section */}
+        <Route
+          path="/patient/*"
+          element={
+            <>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<PatientProfile />} />
+              </Routes>
+            </>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }
