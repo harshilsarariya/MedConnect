@@ -34,24 +34,9 @@ function AddHospital() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10">
+    <div className="flex flex-col items-center mt-10 w-full">
       <h2 className="text-2xl font-bold mb-5">Add Hospital</h2>
       <form onSubmit={handleSubmit} className="w-1/2">
-        <div className="mb-4">
-          <label htmlFor="id" className="block text-gray-700 font-bold mb-2">
-            Hospital ID
-          </label>
-          <input
-            required
-            type="text"
-            id="id"
-            name="id"
-            value={hospitalData.id}
-            onChange={handleInputChange}
-            placeholder="Enter hospital ID"
-            className="border rounded-md px-3 py-2 w-full"
-          />
-        </div>
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
             Hospital Name

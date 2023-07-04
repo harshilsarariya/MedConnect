@@ -24,6 +24,13 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+const { PythonShell } = require("python-shell");
+
+PythonShell.run("load_pickle.py", null, (err, results) => {
+  if (err) throw err;
+  console.log(results);
+});
+
 app.use("/api/user", userRoute);
 app.use("/api/hospital", hospitalRoute);
 

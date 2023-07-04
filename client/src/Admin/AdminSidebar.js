@@ -14,12 +14,12 @@ const AdminSidebar = () => {
               </Link>
             </li>
             <li className="my-2">
-              <Link to="/statistics" className="hover:text-blue-200">
+              <Link to="/admin/statistics" className="hover:text-blue-200">
                 Statistics
               </Link>
             </li>
             <li className="my-2">
-              <Link to="/addHospital" className="hover:text-blue-200">
+              <Link to="/admin/addhospital" className="hover:text-blue-200">
                 Add Hospital
               </Link>
             </li>
